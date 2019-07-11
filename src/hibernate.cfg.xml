@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE hibernate-configuration PUBLIC 
+	"http-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+	<session-factory>
+	
+		<!--  Configuração da conexão com o banco MySql e dialeto -->
+		
+		<property name="dialect">org.hibernate.dialect.MySQL5InnoDBDialect</property>		
+		<property name="connection.driver_class">com.mysql.jdbc.Driver</property>
+		<property name="connection.url">jdbc:mysql://localhost/agenda</property>
+		<property name="connection.username">root</property>
+		<property name="connection.password">root</property>
+		<property name="current_session_context_class">thread</property>
+		
+		<!-- Usando as configurações C3PO para pool de conexões -->
+		
+		<property name="c3p0.min_size">5</property>
+		<property name="c3p0.max_size">20</property>
+		<property name="c3p0.timeout">300</property>
+		<property name="c3p0.maz_statements">50</property>
+		<property name="c3p0.idle_test_period">3000</property>
+		
+		
+		<!-- Configurações de debug -->
+		
+		<property name="show_sql">true</property>
+		<property name="format_sql">true</property>
+		<property name="generate_statistics">true</property>
+		<property name="use_sql_comments">true</property>
+		
+		<!-- Mapeando classes -->
+		
+		<mapping class="com.livro.capitulo3.crud.annotations.ContatoAnnotations"/>
+	</session-factory>
+</hibernate-configuration>
