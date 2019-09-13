@@ -49,9 +49,10 @@ public class UsuarioDAOHibernate implements UsuarioDAO
 	}
 
 	@Override
-	public List<Usuario> listar() {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Usuario> listar() 
+	{
+		
+		return this.session.createCriteria(Usuario.class).list();
 	}
 
 	public Session getSession() {

@@ -8,11 +8,31 @@
 		<title>Login</title>
 	</h:head>
 	<h:body>
-		<h1>Login</h1>
-		<hr/>
 		<h:form>
 			<h:commandLink action="#{usuarioBean.novo}" value="Registre-se"/>
 		</h:form>
-		<hr/>	
+		
+		<h:panelGroup rendered="#{!empty param.login_error}">
+			<span style="font-color:red">Erro ao efetuar o login</span><br/>
+			<br/>
+			motivo: #{SPRING_SECURITY_LAST_EXCEPTION.message}
+		</h:panelGroup>
+		<form id="login" method="post" action="#{request.contextPath}/j_spring_security_check">
+			<TABLE>
+				<tr><TD>Login</TD>
+					<td><INPUT type="text" name="j_username"/></td></tr>
+				<tr><TD>Senha</TD>
+					<td><INPUT type="password" name="j_password"/></td></tr>
+				<TR><TD align="right"><INPUT type="checkbox" name="_spring_security_remember_me"/></TD>
+					<TD> Entrar Automaticamente</TD></TR>
+				
+				<tr><TD></TD>
+					<td><INPUT type="submit" value="Entrar"/></td>
+				</tr>
+			</TABLE>
+			<SCRIPT>
+				document.getElementById("login").j_username.value = "#{SPRING_SECURITY_LAST_USERNAME}";
+			</SCRIPT>
+		</form>
 	</h:body>
 </html>

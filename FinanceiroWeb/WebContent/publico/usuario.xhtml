@@ -16,8 +16,9 @@
 			<h:messages />
 			<h:inputHidden value="#{usuarioBean.usuario.codigo}"/>
 			<h:inputHidden value="#{usuarioBean.usuario.ativo}"/>
-			
-			<h:panelGrid columns="2">
+			<h:inputHidden value="#{usuarioBean.destinoSalvar}"/>
+						
+			<h:panelGrid columns="2"> 
 				<h:outputText 
 					value="Nome:" 
 					for="nome"/>
