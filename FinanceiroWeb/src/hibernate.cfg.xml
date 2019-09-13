@@ -18,7 +18,7 @@
 		<property name="c3p0.timeout">300</property>
 		<property name="c3p0.maz_statements">50</property>
 		<property name="c3p0.idle_test_period">3000</property>
-		
+		<property name="hibernate.hbm2ddl.auto">update</property>
 		
 		<!-- Configurações de debug -->
 		<property name="verifyServerCertificate">false</property>

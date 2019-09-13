@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE html>
+<html
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:sec="http://www.springframework.org/secutiry/facelets/tags">
+	<h:head>
+		<title>Principal</title>
+	</h:head>
+	<h:body>
+		<h1>Gerenciador Financeiro Pessoal</h1>
+		
+		Usuário logado #{request.remoteUser}
+		<br/>
+		<h:form>
+			<sec:ifAnyGrated roles="ROLE_ADMINISTRADOR">
+				<h:commandLink action="/admin/principal" title="Administrativo">
+					<h:graphicImage />
+				</h:commandLink>
+			</sec:ifAnyGrated>
+			
+			<a 
+				onclick="document.location='#{request.contextPath}/j_spring_security_logout'" 
+				title="Sair">
+				<h:graphicImage/>
+			</a>
+			
+		</h:form>
+	</h:body>
+</html>
