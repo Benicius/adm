@@ -9,7 +9,7 @@
 	<http>
 		<intercept-url pattern="/admin/**" access="ROLE_ADMINISTRADOR"/>
 		<intercept-url pattern="/restrito/**" access="ROLE_USUARIO"/>
-		<form-login login-page="/piblico/login.jsf"
+		<form-login login-page="/publico/login.jsf"
 			always-use-default-target="true"
 			default-target-url="/restrito/principal.jsf"
 			authentication-failure-url="/publico/login.jsf?login_erro=1"/>
@@ -20,7 +20,7 @@
 		<authentication-provider>
 			<jdbc-user-service data-source-ref="financeiroDataSource"
 				authorities-by-username-query="SELECT u.login, p.permissao
-					FROM usuario u, usuario_permissap p where u.codigo = p.usuario AND u.login = ?"
+					FROM usuario u, usuario_permissao p where u.codigo = p.usuario AND u.login = ?"
 				users-by-username-query="SELECT login, senha, ativo FROM usuario WHERE login = ?"/>
 		</authentication-provider>
 	</authentication-manager>

@@ -30,5 +30,6 @@
 		<!-- Mapeando classes -->
 		<mapping class="financeiro.usuario.Usuario"/>
 		
+		
 	</session-factory>
 </hibernate-configuration>

@@ -9,7 +9,7 @@
 	</h:head>
 	<h:body>
 		<h:form>
-			<h:commandLink action="#{usuarioBean.novo}" value="Registre-se"/>
+			<h:commandButton action="#{usuarioBean.novo}" value="Registre-se"/>
 		</h:form>
 		
 		<h:panelGroup rendered="#{!empty param.login_error}">
