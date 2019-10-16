@@ -29,6 +29,7 @@
 		
 		<!-- Mapeando classes -->
 		<mapping class="financeiro.usuario.Usuario"/>
+		<mapping class="financeiro.conta.Conta"/>
 		
 		
 	</session-factory>
