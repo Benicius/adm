@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE html>
+<html
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:sec="http://www.springframework.org/secutiry/facelets/tags">
+	<h:head>
+		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"/>
+		<title>Cadastro de contas</title>
+	</h:head>
+	<h:body>
+		<h1>Cadastro de Contas</h1>
+		
+		<h:form id="edicao">
+			<!-- Aqui entrará o formulário de cadastro de Contas -->
+			<h:messages/>
+			<h:inputHidden value="#{contaBean.selecionada.conta}"/>
+			<h:inputHidden value="#{contaBean.selecionada.favorita}"/>
+			
+			<h:panelGrid
+				columns="2">
+				<h:outputLabel value="Descrição:" for="descricao"/>
+				<h:inputText 
+					id="descricao" 
+					value="#{contaBean.selecionada.descricao}" 
+					required="true" maxlength="45"/>
+					
+				<h:outputText value="Saldo Inicial:" for="saldoInicial"/>
+				<h:inputText 
+					id="saldoInicial"
+					value="#{contaBean.selecionada.saldoInicial}"
+					size="10">
+					<f:convertNumber minFractionDigits="2"/>
+				</h:inputText>
+				
+				<h:commandButton
+					value="Salvar" action="#{contaBean.salvar}">
+					<f:ajax execute="@form" render=":edicao :listagem"/>
+				</h:commandButton>	
+			</h:panelGrid>
+		</h:form>
+		
+		<h:form id="listagem">
+			<h:dataTable 
+				value="#{contaBean.lista}" 
+				var="conta"
+				rendered="#{!empty contaBean.lista}">
+				<!-- Aqui são definidas as colunas dataTable -->
+			</h:dataTable>
+		</h:form>
+	</h:body>
+</html>
