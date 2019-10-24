@@ -27,13 +27,22 @@ public class ContaBean implements Serializable
 		selecionada = new Conta();
 		lista = null;
 	}
-	public void editar() {
+	
+	public void excluir() 
+	{
+		ContaNegocio negocio = new ContaNegocio();
+		negocio.excluir(selecionada);
+		selecionada = new Conta();
+		
+		lista = null;
 		
 	}
-	public void excluir() {
+	public void tornarFavorita() 
+	{
+		ContaNegocio negocio = new ContaNegocio();
+		negocio.tornarFavorita(selecionada);
 		
-	}
-	public void tornarFavorita() {
+		selecionada = new Conta();
 		
 	}
 	public Conta getSelecionada() {

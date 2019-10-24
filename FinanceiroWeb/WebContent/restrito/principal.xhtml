@@ -29,5 +29,21 @@
 			<br/>
 			Nome do Usuário logado #{contextoBean.usuarioLogado.nome}
 		</h:form>
+			<h:commandButton value="Conta" action="/conta.jsf"/>
+			
+			<h:selectOneMenu value="#{contextoBean.contaAtiva.conta}"
+				valueChangeListener="#{contextoBean.setContaAtiva}"
+				rendered="#{!empty contextoBean}"
+				onchange="submit()">
+				<f:selectItems value="#{contaBean.lista}"
+					var="conta" itemValue="#{conta.conta}" itemLabel="#{conta.descricao}"/>
+			</h:selectOneMenu>
+			
+			<sec:ifAnyGranted roles="ROLE_ADMINISTRADOR">
+				<h:commandButton value="Administração" action="/admin/principal"/>
+			</sec:ifAnyGranted>
+			
+			<input type="button" value="Logout"
+				onclick="document.location='#{request.contextPath}/j_spring_security_logout'"/>
 	</h:body>
 </html>

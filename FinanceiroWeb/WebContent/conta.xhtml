@@ -47,6 +47,47 @@
 				var="conta"
 				rendered="#{!empty contaBean.lista}">
 				<!-- Aqui são definidas as colunas dataTable -->
+				<h:column>
+					<f:facet name="header">Descrição</f:facet>
+					<h:outputText value="#{conta.descricao}"/>
+				</h:column>
+				<h:column>
+					<f:facet name="header">Data Cadastro</f:facet>
+					<h:outputText value="#{conta.dataCadastro}">
+						<f:convertDateTime dateStyle="medium"/>
+					</h:outputText>
+				</h:column>
+				
+				<h:column>
+					<f:facet name="header">Saldo Inicial</f:facet>
+					<h:outputText value="#{conta.saldoInicial}" style="text-align:right;display:block">
+						<f:convertNumber minFractionDigits="2"/>
+					</h:outputText>
+				</h:column>
+				
+				<h:column>
+					<h:commandLink
+						action="#{contaBean.tornarFavorita}">
+						<f:ajax execute="@this" render=":listagem"/>
+						<f:setPropertyActionListener value="#{conta}" target="#{contaBean.selecionada}"/>
+					</h:commandLink>
+				</h:column>
+				
+				<h:column>
+					<h:commandLink>
+						<f:ajax execute="@this" render=":edicao"/>
+						<f:setPropertyActionListener value="#{conta}" target="#{contaBean.selecionada}"/>
+					</h:commandLink>
+				</h:column>
+				
+				<h:column>
+					<h:commandLink
+						action="#{contaBean.excluir}">
+						<f:ajax execute="@this" render=":listagem"/>
+						<h:graphicImage library="imagens" name="excluir16.png"/>
+						<f:setPropertyActionListener value="#{conta}" target="#{contaBean.selecionada}"/>
+					</h:commandLink>
+				</h:column>
 			</h:dataTable>
 		</h:form>
 	</h:body>
